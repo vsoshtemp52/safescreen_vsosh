@@ -1,0 +1,11 @@
+{
+  "tesseract_cmd": "C:\\\\Program Files\\\\Tesseract-OCR\\\\tesseract.exe",
+  "shield_padding": 30,
+  "memory_duration": 60.0,
+  "recheck_interval": 55.0,
+  "max_windows_to_check": 10,
+  "scanner_sleep": 0.05,
+  "protection_level": 3,
+  "whitelist_words": [],
+  "blacklist_words": []
+}
