@@ -37,12 +37,12 @@ class SynchronizedOCRDLP:
                                ["секретно", "конфиденциально", "тайна", "неразглашение", "компромат"],
                                ["secret", "confidential", "classified", "disclosure", "compromat"])
 
-        # 5. Криптовалюты и Финансы (Критика)
+        # 5. Криптовалюты и Фиансы
         self._add_sync_concept(5,
                                ["биткоин", "крипта", "кошелек", "эфириум", "cvv", "код", "пин"],
                                ["bitcoin", "crypto", "wallet", "ethereum", "cvv", "code", "pin"])
 
-        # 6. Удостоверения личности (Hard PII)
+        # 6. Удостоверения личности
         self._add_sync_concept(5,
                                ["паспорт", "загранпаспорт", "биометрия", "отпечаток", "виза", "снилс"],
                                ["passport", "id-card", "biometric", "fingerprint", "visa", "ssn"])
@@ -137,7 +137,7 @@ class SynchronizedOCRDLP:
 
         # 4. Контакты
         self._add_sync_concept(1,
-                               ["контакт", "адрес", "телефон", "почта", "email", "абонент"],
+                               ["контакт", "адрес", "телефон", "почта", "электронная почта", "абонент"],
                                ["contact", "address", "phone", "mail", "email", "subscriber"])
 
     def _generate_russian_morphology(self, word):
