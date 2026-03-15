@@ -18,10 +18,8 @@ from app_config import get_default_config_path, load_config
 from vuln_words_dict import SynchronizedOCRDLP
 
 
-# --- WINAPI ---
 user32 = ctypes.windll.user32
 
-# Type definitions for x64
 WPARAM = ctypes.c_ulonglong
 LPARAM = ctypes.c_longlong
 HWND = ctypes.c_void_p
@@ -55,7 +53,6 @@ class WNDCLASSEX(ctypes.Structure):
     ]
 
 
-# Constants
 WS_POPUP = 0x80000000
 WS_EX_LAYERED = 0x00080000
 WS_EX_TRANSPARENT = 0x00000020
