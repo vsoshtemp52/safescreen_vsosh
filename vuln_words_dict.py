@@ -144,7 +144,7 @@ class SynchronizedOCRDLP:
         forms = {word}
         root = word
 
-        # --- СУЩЕСТВИТЕЛЬНЫЕ ---
+        # существительные
         if word.endswith("а"):
             root = word[:-1]
             forms.update(
@@ -161,7 +161,7 @@ class SynchronizedOCRDLP:
             root = word[:-1]
             forms.update([root + "а", root + "у", root + "ом", root + "а", root + "ам", root + "ами", root + "ах"])
 
-        # --- ПРИЛАГАТЕЛЬНЫЕ ---
+        # прилагательные
         elif word.endswith("ый") or word.endswith("ий"):
             root = word[:-2]
             forms.update([root + "ого", root + "ому", root + "ым", root + "ом", root + "ые", root + "ых", root + "ыми"])
@@ -169,7 +169,7 @@ class SynchronizedOCRDLP:
             root = word[:-2]
             forms.update([root + "ой", root + "ую", root + "ые", root + "ых", root + "ым", root + "ыми"])
 
-        # --- МУЖСКОЙ РОД ---
+        # мужской род
         else:
             forms.update(
                 [word + "а", word + "у", word + "ом", word + "е", word + "ы", word + "ов", word + "ам", word + "ами",
@@ -187,7 +187,6 @@ class SynchronizedOCRDLP:
                 for word in base_words:
                     word = word.lower()
 
-                    # 1. Морфология
                     variants = []
                     if lang == "ru":
                         variants = self._generate_russian_morphology(word)
@@ -196,13 +195,11 @@ class SynchronizedOCRDLP:
                         if word.endswith("y"): variants.append(word[:-1] + "ies")
                         if word.endswith("ss"): variants.append(word + "es")
 
-                    # 2. Пост-обработка (Регистр + OCR)
                     for v in variants:
                         expanded_set.add(v)
                         expanded_set.add(v.upper())
                         expanded_set.add(v.capitalize())
 
-                        # OCR Обфускация для уровней 3-5
                         if level >= 3:
                             ocr = v
                             replacements = [
