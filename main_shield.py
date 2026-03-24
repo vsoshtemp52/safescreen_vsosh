@@ -111,8 +111,6 @@ def load_runtime_settings(config_path: Path | None = None) -> None:
     BLACKLIST_WORDS = DLP_ENGINE.expand_custom_words(SETTINGS.get("blacklist_words", []))
 
     protection_level = int(SETTINGS.get("protection_level", 3))
-    # UI levels grow from strict-critical to broad coverage:
-    # 1 -> {5}, 2 -> {4,5}, ..., 5 -> {1,2,3,4,5}
     min_dict_level = max(1, 6 - protection_level)
     ALLOWED_LEVELS = set(range(min_dict_level, 6))
 
@@ -258,20 +256,10 @@ def is_valid_window(hwnd):
 
     if not title:
         return False
-
-    bad_titles = ["program manager", "shield", "cmd", "python", "powershell", "task switching", "пуск"]
-    if any(item in title for item in bad_titles):
-        return False
-
     try:
         class_name = win32gui.GetClassName(hwnd).lower()
     except Exception:
         return False
-
-    bad_classes = ["shell_traywnd", "progman", "workerw"]
-    if any(item in class_name for item in bad_classes):
-        return False
-
     try:
         rect = win32gui.GetWindowRect(hwnd)
         w = rect[2] - rect[0]
